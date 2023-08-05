@@ -2,17 +2,18 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def send_verification_email(receiver_email, verification_code):
+def send_verification_email(receiver_email, verification_code , userCode , type):
     sender_email = 'subath.abeysekara@gmail.com'  # Replace with your email address
     sender_password = 'ifbfbbzstpanyxmq'  # Replace with your email password
     subject = 'Account Verification'
+    link = "https://fmrlw0xn6h.execute-api.ap-south-1.amazonaws.com/dev/"+type+"/verifyEmail/"+userCode+"/"+verification_code
     html_content = '''
         <html>
             <head></head>
             <body>
                 <h1>Hello!</h1>
                 <p>This is an example HTML email sent using Python.</p>
-                <p><a href="'''+f'http://www.example.com/verify?code={verification_code}'+'''">VERIFY</a> to verify your email.</p>
+                <p><a href="'''+f'{link}'+'''">VERIFY</a>Click to verify your email.</p>
             </body>
         </html>
         '''
@@ -37,7 +38,6 @@ def send_verification_email(receiver_email, verification_code):
 
     # Close the connection
     server.quit()
-
     return {
         "state": True,
         "message": "success"

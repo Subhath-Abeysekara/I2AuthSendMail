@@ -1,6 +1,6 @@
 from flask import Flask,request
 from flask_cors import CORS , cross_origin
-import sendMail
+from sendMail import send_verification_email
 
 app = Flask(__name__)
 CORS(app , resources={r"/":{"origins":"*"}})
@@ -9,13 +9,31 @@ CORS(app , resources={r"/":{"origins":"*"}})
 def main():
     return "hello world"
 
-@app.route("/sendMail", methods=["POST"])
+@app.route("/sendMailUser", methods=["POST"])
 @cross_origin()
-def sendMail():
+def sendMailUser():
     try:
         if request.data:
             print(request.json)
-            return sendMail.send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'])
+            return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="user")
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+@app.route("/sendMailAdmin", methods=["POST"])
+@cross_origin()
+def sendMailAdmin():
+    try:
+        if request.data:
+            print(request.json)
+            return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin")
         else:
             return {
                 "state": False,
