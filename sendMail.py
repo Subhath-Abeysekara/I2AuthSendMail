@@ -12,7 +12,7 @@ def send_verification_email(receiver_email, verification_code , userCode , type 
     <head>
     </head>
     <body style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
-        <div style="display: flex; justify-content: center; align-items: center;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-left: 25%;">
             <div 
                 style="height: 510px; 
                     width: 520px; 
