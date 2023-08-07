@@ -15,7 +15,7 @@ def sendMailUser():
     try:
         if request.data:
             print(request.json)
-            return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="user")
+            return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="user", image_url=request.json['image_url'], name=request.json['name'])
         else:
             return {
                 "state": False,
@@ -33,7 +33,7 @@ def sendMailAdmin():
     try:
         if request.data:
             print(request.json)
-            return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin")
+            return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin", image_url=request.json['image_url'], name=request.json['name'])
         else:
             return {
                 "state": False,
