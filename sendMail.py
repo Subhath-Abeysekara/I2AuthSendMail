@@ -3,17 +3,18 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 def send_verification_email(receiver_email, verification_code , userCode , type):
-    sender_email = 'subath.abeysekara@gmail.com'  # Replace with your email address
-    sender_password = 'ifbfbbzstpanyxmq'  # Replace with your email password
+    sender_email = 'icodeinnovahostingservice@gmail.com'  # Replace with your email address
+    sender_password = 'hnykgvqgyvorghrb'  # Replace with your email password
     subject = 'Account Verification'
-    link = "https://fmrlw0xn6h.execute-api.ap-south-1.amazonaws.com/dev/"+type+"/verifyEmail/"+userCode+"/"+verification_code
+    link = "https://zr2wffw0tl.execute-api.ap-south-1.amazonaws.com/dev/"+type+"/verifyEmail/"+userCode+"/"+verification_code
     html_content = '''
         <html>
             <head></head>
             <body>
-                <h1>Hello!</h1>
-                <p>This is an example HTML email sent using Python.</p>
-                <p><a href="'''+f'{link}'+'''">VERIFY</a>Click to verify your email.</p>
+                <h1>I2Auth</h1>
+                <h2>Hello!</h2>
+                <p>Please Use The Folowing Link To Verify Your Email.</p>
+                <p><a href="'''+f'{link}'+'''">VERIFY</a></p>
             </body>
         </html>
         '''
