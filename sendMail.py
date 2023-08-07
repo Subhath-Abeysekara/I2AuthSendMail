@@ -25,8 +25,8 @@ def send_verification_email(receiver_email, verification_code , userCode , type 
                 <p style="text-align: center; font-size: 14px; font-weight: 500;">Thank you for signing up with '''+f'{name}'+'''.</p>
                 <p style="text-align: center; font-size: 14px;">We're thrilled to have you on board!</p>
                 <p style="text-align: center; font-size: 13px; color: grey;  margin-top: 70px;">To get started, please click the link below to verify your email address</p>
-                <button  onclick="'''+f'{link}'+'''" 
-                    style="padding: 0.7rem;
+                <a  href="'''+f'{link}'+'''" 
+                    ><button style="padding: 0.7rem;
                         width: 100%;
                         background-color: #037503; 
                         color: white; 
@@ -34,7 +34,7 @@ def send_verification_email(receiver_email, verification_code , userCode , type 
                         border: none;
                         margin-top: 15px; 
                         font-size: 18px; 
-                        cursor: pointer;">Verify My Email</button>
+                        cursor: pointer;">Verify My Email</button></a>
                 <p 
                     style="margin-top:12vh; 
                     text-align: center;
