@@ -36,11 +36,11 @@ def send_verification_email(receiver_email, verification_code , userCode , type 
                         margin-top: 15px; 
                         font-size: 18px; 
                         cursor: pointer;">Verify My Email</button></a>
-                <p 
-                    style="margin-top:80px; 
-                    text-align: center;
-                    font-size: 12px; 
-                    color: rgb(110, 110, 110);">@2023 i2Auth</p>
+                <a href="http://43.205.96.222:5000"><p 
+                                style="margin-top:12%; 
+                                text-align: center;
+                                font-size: 12px; 
+                                color: rgb(110, 110, 110);">Click here @2023 i2Auth</p></a>
                 </div>
     </body>
 </html>

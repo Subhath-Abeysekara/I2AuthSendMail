@@ -5,9 +5,44 @@ from sendMail import send_verification_email
 app = Flask(__name__)
 CORS(app , resources={r"/":{"origins":"*"}})
 
+image_url = "https://firebasestorage.googleapis.com/v0/b/meetingdetecting.appspot.com/o/lunchbucket_special_meal%2FLunchBucketLogo.png?alt=media&token=d34aeff8-683d-4c3f-b23f-88951ddadff6"
+
 @app.route("/")
 def main():
-    return "hello world"
+    return '''<html>
+    <head>
+    </head>
+    <body style="font-family: Verdana, Geneva, Tahoma, sans-serif; background-image: url("''' + f'{image_url}' + '''");">
+        <div 
+            style="height: 98%; 
+                width: 100%;">
+             
+               <div style="margin-left: auto; margin-right: auto;height: 40%; width: 40%; min-width: 250px; min-height: 250px; max-width: 320px; max-height: 320px;"> <img src="''' + f'{image_url}' + '''" alt="Lunch Bucket Logo" style="height: 200px; width: 400px; "></div>
+            
+                <h3 style="color: #e7e7e7 ; text-align: center; font-size: 20px; margin: 0rem 10% 0% 10%;">Discover the power of our all-in-one authentication solution, where a comprehensive array of authentication services converges into a single, streamlined product.</h3>
+                <h3 style="color: #e7dcdb ; text-align: center; font-size: 16px; margin: 2rem 10% 0% 10%;">Just leave the security worries to us while you focus on crafting exceptional software.</h3>
+                <p style="text-align: center; font-size: 16px; font-weight: 500; color: #f7e5e8;">Here is how we assist you...</p>
+     
+                <table style="width: 100%; margin-top: 4rem;">
+                    <tr>
+                        <td style="width: 33.3%;"><div style="padding: 0.5rem; border-radius: 4px; background-color: #010033; color: white; text-align: center; margin: 0.5rem;">Customizable User Workflows</div> </td>
+                        <td style="width: 33.3%;"><div style="padding: 0.5rem; border-radius: 4px; background-color: #010033; color: white; text-align: center; margin: 0.5rem;">Social Media and OAuth Integration</div> </td>
+                        <td style="width: 33.3%;"><div style="padding: 0.5rem; border-radius: 4px; background-color: #010033; color: white; text-align: center; margin: 0.5rem;">Role-Based Access Control</div> </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 33.3%;"><div style="padding: 0.5rem; border-radius: 4px; background-color: #010033; color: white; text-align: center; margin: 0.5rem;">Customizable Login Themes</div> </td>
+                        <td style="width: 33.3%;"><div style="padding: 0.5rem; border-radius: 4px; background-color: #010033; color: white; text-align: center; margin: 0.5rem;">Scalability and Performance</div> </td>
+                        <td style="width: 33.3%;"><div style="padding: 0.5rem; border-radius: 4px; background-color: #010033; color: white; text-align: center; margin: 0.5rem;">Developer-Friendly SDKs</div> </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 33.3%;"><div style="padding: 0.5rem; border-radius: 4px; background-color: #010033; color: white; text-align: center; margin: 0.5rem;">Compliance and Regulations</div> </td>
+                        <td style="width: 33.3%;"><div style="padding: 0.5rem; border-radius: 4px; background-color: #010033; color: white; text-align: center; margin: 0.5rem;">Support and Training</div> </td>
+                        <td style="width: 33.3%;"><div style="padding: 0.5rem; border-radius: 4px; background-color: #010033; color: white; text-align: center; margin: 0.5rem;">ML Support</div> </td>
+                    </tr>
+                </table>
+        </div>
+    </body>
+</html>'''
 
 @app.route("/sendMailUser", methods=["POST"])
 @cross_origin()
