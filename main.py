@@ -5,14 +5,15 @@ from sendMail import send_verification_email
 app = Flask(__name__)
 CORS(app , resources={r"/":{"origins":"*"}})
 
-image_url = "https://firebasestorage.googleapis.com/v0/b/meetingdetecting.appspot.com/o/lunchbucket_special_meal%2FLunchBucketLogo.png?alt=media&token=d34aeff8-683d-4c3f-b23f-88951ddadff6"
+image_url = "https://firebasestorage.googleapis.com/v0/b/meetingdetecting.appspot.com/o/lunchbucket_special_meal%2Fi2AuthLogo.jpeg?alt=media&token=2cc0abf1-8069-47ad-863b-862be3afe2ed"
+image_url_background = "https://firebasestorage.googleapis.com/v0/b/meetingdetecting.appspot.com/o/lunchbucket_special_meal%2Fbackground.jpeg?alt=media&token=94c39cf0-d097-4967-b261-1ac2b6f9e688"
 
 @app.route("/")
 def main():
     return '''<html>
     <head>
     </head>
-    <body style="font-family: Verdana, Geneva, Tahoma, sans-serif; background-image: url("''' + f'{image_url}' + '''");">
+    <body style="font-family: Verdana, Geneva, Tahoma, sans-serif; background-image: url(''' + f'{image_url_background}' + ''');">
         <div 
             style="height: 98%; 
                 width: 100%;">
