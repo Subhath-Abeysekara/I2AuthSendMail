@@ -1,6 +1,7 @@
 from flask import Flask,request
 from flask_cors import CORS , cross_origin
-from sendMail import send_verification_email
+from sendVerificationMail import send_verification_email
+from sendForgetPwMail import send_forgetPW_mail
 
 app = Flask(__name__)
 CORS(app , resources={r"/":{"origins":"*"}})
@@ -70,6 +71,24 @@ def sendMailAdmin():
         if request.data:
             print(request.json)
             return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin", image_url=request.json['image_url'], name=request.json['name'])
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+@app.route("/sendMailForgetPw", methods=["POST"])
+@cross_origin()
+def sendMailForgetPw():
+    try:
+        if request.data:
+            print(request.json)
+            return send_forgetPW_mail(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'])
         else:
             return {
                 "state": False,
