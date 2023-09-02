@@ -1,8 +1,8 @@
 import sendHtmlMail
 
-def send_verification_email(receiver_email, verification_code , userCode , type , image_url , name):
+def send_verification_email(receiver_email, verification_code , userCode , type , image_url , name , project_code):
     subject = 'Account Verification'
-    link = "https://zr2wffw0tl.execute-api.ap-south-1.amazonaws.com/dev/"+type+"/verifyEmail/"+userCode+"/"+verification_code
+    link = "https://zr2wffw0tl.execute-api.ap-south-1.amazonaws.com/dev/"+type+"/verifyEmail/"+userCode+"/"+verification_code+"/"+project_code
     html_content = '''
         <html>
     <head>

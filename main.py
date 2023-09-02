@@ -52,7 +52,7 @@ def sendMailUser():
     try:
         if request.data:
             print(request.json)
-            return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="user", image_url=request.json['image_url'], name=request.json['name'])
+            return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="user", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
                 "state": False,
@@ -70,7 +70,7 @@ def sendMailAdmin():
     try:
         if request.data:
             print(request.json)
-            return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin", image_url=request.json['image_url'], name=request.json['name'])
+            return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
                 "state": False,
@@ -88,7 +88,7 @@ def sendMailForgetPw():
     try:
         if request.data:
             print(request.json)
-            return send_forgetPW_mail(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'])
+            return send_forgetPW_mail(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
                 "state": False,

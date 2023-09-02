@@ -1,9 +1,9 @@
 import sendHtmlMail
 
 
-def send_forgetPW_mail(receiver_email, token, image_url, name):
+def send_forgetPW_mail(receiver_email, token, image_url, name , project_code):
     subject = 'Account Verification'
-    link = "https://zr2wffw0tl.execute-api.ap-south-1.amazonaws.com/dev/user/updatePassword/" + token
+    link = "https://zr2wffw0tl.execute-api.ap-south-1.amazonaws.com/dev/user/updatePassword/" + token + "/" + project_code
     html_content = '''
         <html>
     <head>
