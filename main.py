@@ -1,7 +1,7 @@
 from flask import Flask,request
 from flask_cors import CORS , cross_origin
-from sendVerificationMail import send_verification_email
-from sendForgetPwMail import send_forgetPW_mail
+from sendVerificationMail import send_verification_email, send_verification_email_prod
+from sendForgetPwMail import send_forgetPW_mail, send_forgetPW_mail_prod
 
 app = Flask(__name__)
 CORS(app , resources={r"/":{"origins":"*"}})
@@ -89,6 +89,60 @@ def sendMailForgetPw():
         if request.data:
             print(request.json)
             return send_forgetPW_mail(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+@app.route("prod/sendMailUser", methods=["POST"])
+@cross_origin()
+def sendMailUserProd():
+    try:
+        if request.data:
+            print(request.json)
+            return send_verification_email_prod(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="user", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+@app.route("prod/sendMailAdmin", methods=["POST"])
+@cross_origin()
+def sendMailAdminProd():
+    try:
+        if request.data:
+            print(request.json)
+            return send_verification_email_prod(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+@app.route("prod/sendMailForgetPw", methods=["POST"])
+@cross_origin()
+def sendMailForgetPwProd():
+    try:
+        if request.data:
+            print(request.json)
+            return send_forgetPW_mail_prod(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
                 "state": False,
