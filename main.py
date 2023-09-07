@@ -100,7 +100,7 @@ def sendMailForgetPw():
             "message": "error"
         }
 
-@app.route("prod/sendMailUser", methods=["POST"])
+@app.route("/prod/sendMailUser", methods=["POST"])
 @cross_origin()
 def sendMailUserProd():
     try:
@@ -118,7 +118,7 @@ def sendMailUserProd():
             "message": "error"
         }
 
-@app.route("prod/sendMailAdmin", methods=["POST"])
+@app.route("/prod/sendMailAdmin", methods=["POST"])
 @cross_origin()
 def sendMailAdminProd():
     try:
@@ -136,7 +136,7 @@ def sendMailAdminProd():
             "message": "error"
         }
 
-@app.route("prod/sendMailForgetPw", methods=["POST"])
+@app.route("/prod/sendMailForgetPw", methods=["POST"])
 @cross_origin()
 def sendMailForgetPwProd():
     try:
