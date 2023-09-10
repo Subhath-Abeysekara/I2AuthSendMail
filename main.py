@@ -1,7 +1,7 @@
 from flask import Flask,request
 from flask_cors import CORS , cross_origin
-from sendVerificationMail import send_verification_email, send_verification_email_prod
-from sendForgetPwMail import send_forgetPW_mail, send_forgetPW_mail_prod
+from sendVerificationMail import send_verification_email, send_verification_email_prod, send_verification_email_sandBox
+from sendForgetPwMail import send_forgetPW_mail, send_forgetPW_mail_prod, send_forgetPW_mail_sandBox
 
 app = Flask(__name__)
 CORS(app , resources={r"/":{"origins":"*"}})
@@ -100,6 +100,7 @@ def sendMailForgetPw():
             "message": "error"
         }
 
+#         **********PROD************
 @app.route("/prod/sendMailUser", methods=["POST"])
 @cross_origin()
 def sendMailUserProd():
@@ -143,6 +144,62 @@ def sendMailForgetPwProd():
         if request.data:
             print(request.json)
             return send_forgetPW_mail_prod(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+#      ********************SAND BOX***************
+
+@app.route("/beta/sendMailUser", methods=["POST"])
+@cross_origin()
+def sendMailUserBeta():
+    try:
+        if request.data:
+            print(request.json)
+            return send_verification_email_sandBox(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="user", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+@app.route("/beta/sendMailAdmin", methods=["POST"])
+@cross_origin()
+def sendMailAdminBeta():
+    try:
+        if request.data:
+            print(request.json)
+            return send_verification_email_sandBox(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+@app.route("/beta/sendMailForgetPw", methods=["POST"])
+@cross_origin()
+def sendMailForgetPwBeta():
+    try:
+        if request.data:
+            print(request.json)
+            return send_forgetPW_mail_sandBox(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
                 "state": False,
