@@ -89,7 +89,7 @@ def send_verification_email_prod(receiver_email, verification_code, userCode, ty
 
 def send_verification_email_sandBox(receiver_email, verification_code, userCode, type, image_url, name, project_code):
     subject = 'Account Verification'
-    link = "https://8348f33z41.execute-api.ap-south-1.amazonaws.com/beta" + type + "/verifyEmail/" + userCode + "/" + verification_code + "/" + project_code
+    link = "https://8348f33z41.execute-api.ap-south-1.amazonaws.com/beta/" + type + "/verifyEmail/" + userCode + "/" + verification_code + "/" + project_code
     html_content = '''
         <html>
     <head>
