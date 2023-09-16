@@ -2,7 +2,7 @@ import sendHtmlMail
 
 def send_open_mail(receiver_email, token, image_url, name , project_code):
     subject = 'Account Verification'
-    link = "https://fmrlw0xn6h.execute-api.ap-south-1.amazonaws.com/dev/user/updatePassword/" + token + "/" + project_code
+    link = "https://fmrlw0xn6h.execute-api.ap-south-1.amazonaws.com/dev/project/openProject/" + token + "/" + project_code
     html_content = '''
         <html>
     <head>
@@ -45,7 +45,7 @@ def send_open_mail(receiver_email, token, image_url, name , project_code):
 
 def send_open_mail_prod(receiver_email, token, image_url, name , project_code):
     subject = 'Account Verification'
-    link = "https://a2og6gjwae.execute-api.ap-south-1.amazonaws.com/prod/user/updatePassword/" + token + "/" + project_code
+    link = "https://a2og6gjwae.execute-api.ap-south-1.amazonaws.com/prod/project/openProject/" + token + "/" + project_code
     html_content = '''
         <html>
     <head>
@@ -88,7 +88,7 @@ def send_open_mail_prod(receiver_email, token, image_url, name , project_code):
 
 def send_open_mail_sandBox(receiver_email, token, image_url, name , project_code):
     subject = 'Account Verification'
-    link = "https://fw2svr60sl.execute-api.ap-south-1.amazonaws.com/beta/user/updatePassword/" + token + "/" + project_code
+    link = "https://fw2svr60sl.execute-api.ap-south-1.amazonaws.com/beta/project/openProject/" + token + "/" + project_code
     html_content = '''
         <html>
     <head>
