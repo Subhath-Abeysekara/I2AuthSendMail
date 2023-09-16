@@ -102,6 +102,25 @@ def sendMailForgetPw():
             "message": "error"
         }
 
+@app.route("/sendOpenMail", methods=["POST"])
+@cross_origin()
+def sendOpenMail_dev():
+    try:
+        if request.data:
+            print(request.json)
+            return send_open_mail(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+
 #         **********PROD************
 @app.route("/prod/sendMailUser", methods=["POST"])
 @cross_origin()
@@ -157,6 +176,25 @@ def sendMailForgetPwProd():
             "message": "error"
         }
 
+@app.route("/prod/sendOpenMail", methods=["POST"])
+@cross_origin()
+def sendOpenMail_prod():
+    try:
+        if request.data:
+            print(request.json)
+            return send_open_mail_prod(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+
 #      ********************SAND BOX***************
 
 @app.route("/beta/sendMailUser", methods=["POST"])
@@ -202,42 +240,6 @@ def sendMailForgetPwBeta():
         if request.data:
             print(request.json)
             return send_forgetPW_mail_sandBox(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
-        else:
-            return {
-                "state": False,
-                "message": "error no body"
-            }
-    except:
-        return {
-            "state": False,
-            "message": "error"
-        }
-
-@app.route("/dev/sendOpenMail", methods=["POST"])
-@cross_origin()
-def sendOpenMail_dev():
-    try:
-        if request.data:
-            print(request.json)
-            return send_open_mail(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
-        else:
-            return {
-                "state": False,
-                "message": "error no body"
-            }
-    except:
-        return {
-            "state": False,
-            "message": "error"
-        }
-
-@app.route("/prod/sendOpenMail", methods=["POST"])
-@cross_origin()
-def sendOpenMail_prod():
-    try:
-        if request.data:
-            print(request.json)
-            return send_open_mail_prod(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
                 "state": False,
