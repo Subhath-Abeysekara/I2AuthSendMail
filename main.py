@@ -4,6 +4,7 @@ from flask_cors import CORS , cross_origin
 from sendOpenProjectEmail import send_open_mail, send_open_mail_prod, send_open_mail_sandBox
 from sendVerificationMail import send_verification_email, send_verification_email_prod, send_verification_email_sandBox
 from sendForgetPwMail import send_forgetPW_mail, send_forgetPW_mail_prod, send_forgetPW_mail_sandBox
+from sender_details import set_sender, set_sender_by_user
 
 app = Flask(__name__)
 CORS(app , resources={r"/":{"origins":"*"}})
@@ -54,6 +55,7 @@ def sendMailUser():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="user", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -72,6 +74,7 @@ def sendMailAdmin():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_verification_email(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -90,6 +93,7 @@ def sendMailForgetPw():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_forgetPW_mail(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -108,6 +112,7 @@ def sendOpenMail_dev():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_open_mail(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -128,6 +133,7 @@ def sendMailUserProd():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_verification_email_prod(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="user", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -146,6 +152,7 @@ def sendMailAdminProd():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_verification_email_prod(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -164,6 +171,7 @@ def sendMailForgetPwProd():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_forgetPW_mail_prod(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -182,6 +190,7 @@ def sendOpenMail_prod():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_open_mail_prod(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -203,6 +212,7 @@ def sendMailUserBeta():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_verification_email_sandBox(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="user", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -221,6 +231,7 @@ def sendMailAdminBeta():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_verification_email_sandBox(receiver_email=request.json['email'], verification_code=request.json['code'],userCode=request.json['userCode'] , type="admin", image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -239,6 +250,7 @@ def sendMailForgetPwBeta():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_forgetPW_mail_sandBox(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {
@@ -257,6 +269,7 @@ def sendOpenMail_beta():
     try:
         if request.data:
             print(request.json)
+            set_sender_by_user(obj_body=request.json)
             return send_open_mail_sandBox(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
         else:
             return {

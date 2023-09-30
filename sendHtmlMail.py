@@ -2,9 +2,13 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+from sender_details import get_sender
+
+
 def sendMail(receiver_email, html_content , subject ):
-    sender_email = 'icodeinnovahostingservice@gmail.com'  # Replace with your email address
-    sender_password = 'hnykgvqgyvorghrb'  # Replace with your email password
+    sender = get_sender()
+    sender_email = sender['email']  # Replace with your email address
+    sender_password = sender['password']  # Replace with your email password
     # Setup the email
     msg = MIMEMultipart()
     msg['From'] = sender_email
