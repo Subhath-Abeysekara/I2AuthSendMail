@@ -19,5 +19,6 @@ def get_sender():
 
 def set_sender_by_user(obj_body):
     if hasattr(__obj=obj_body, __name='sender_email') and hasattr(__obj=obj_body , __name="sender_password"):
-        set_sender(email=obj_body.json['sender_email'], password=obj_body.json['sender_password'])
+        if obj_body['sender_email'] != "" and obj_body['sender_password'] != "":
+            set_sender(email=obj_body.json['sender_email'], password=obj_body.json['sender_password'])
     return
