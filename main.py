@@ -1,6 +1,7 @@
 from flask import Flask,request
 from flask_cors import CORS , cross_origin
 
+from sendHtmlMail import sendMail
 from sendOpenProjectEmail import send_open_mail, send_open_mail_prod, send_open_mail_sandBox
 from sendVerificationMail import send_verification_email, send_verification_email_prod, send_verification_email_sandBox
 from sendForgetPwMail import send_forgetPW_mail, send_forgetPW_mail_prod, send_forgetPW_mail_sandBox
@@ -271,6 +272,27 @@ def sendOpenMail_beta():
             print(request.json)
             set_sender_by_user(obj_body=request.json)
             return send_open_mail_sandBox(receiver_email=request.json['email'], token=request.json['token'], image_url=request.json['image_url'], name=request.json['name'],project_code=request.json['project_code'])
+        else:
+            return {
+                "state": False,
+                "message": "error no body"
+            }
+    except:
+        return {
+            "state": False,
+            "message": "error"
+        }
+
+  #******* COMMON *******
+
+@app.route("/common/sendMail", methods=["POST"])
+@cross_origin()
+def sendcommonMail():
+    try:
+        if request.data:
+            print(request.json)
+            set_sender_by_user(obj_body=request.json)
+            return sendMail(receiver_email=request.json['email'],html_content=request.json['content'],subject=request.json['subject'])
         else:
             return {
                 "state": False,
