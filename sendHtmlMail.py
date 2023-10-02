@@ -7,6 +7,7 @@ from sender_details import get_sender
 
 def sendMail(receiver_email, html_content , subject ):
     sender = get_sender()
+    print(sender)
     sender_email = sender['email']  # Replace with your email address
     sender_password = sender['password']  # Replace with your email password
     # Setup the email
