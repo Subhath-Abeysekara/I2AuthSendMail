@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from sender_details import get_sender
 
 
-def sendMail(receiver_email, html_content , subject ):
+def sendMail(receiver_email, html_content , subject):
     sender = get_sender()
     print(sender)
     sender_email = sender['email']  # Replace with your email address
@@ -15,7 +15,8 @@ def sendMail(receiver_email, html_content , subject ):
     msg['From'] = sender_email
     msg['To'] = receiver_email
     msg['Subject'] = subject
-
+    if sender['cc_email'] != "":
+        msg['Cc'] = sender['cc_email']
     # Attach the message to the email
     msg.attach(MIMEText(html_content, 'html'))
 
