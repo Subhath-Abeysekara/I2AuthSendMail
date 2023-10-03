@@ -28,9 +28,10 @@ def sendMail(receiver_email, html_content , subject):
     server.login(sender_email, sender_password)
 
     # Send the email
-    server.sendmail(sender_email, receiver_email, msg.as_string())
-
-    # Close the connection
+    if sender['cc_email'] != "":
+        server.sendmail(sender_email, [receiver_email, sender['cc_email']], msg.as_string())
+    else:
+        server.sendmail(sender_email, receiver_email, msg.as_string())
     server.quit()
     return {
         "state": True,
