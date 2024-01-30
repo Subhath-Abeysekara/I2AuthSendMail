@@ -1,7 +1,10 @@
 import sendHtmlMail
+from env import base_urls
+
+
 def send_forgetPW_mail(receiver_email, token, image_url, name , project_code):
     subject = 'Account Verification'
-    link = "https://zr2wffw0tl.execute-api.ap-south-1.amazonaws.com/dev/user/updatePassword/" + token + "/" + project_code
+    link = f"{base_urls['dev']}/user/updatePassword/" + token + "/" + project_code
     html_content = '''
         <html>
     <head>
@@ -44,7 +47,7 @@ def send_forgetPW_mail(receiver_email, token, image_url, name , project_code):
 
 def send_forgetPW_mail_prod(receiver_email, token, image_url, name , project_code):
     subject = 'Account Verification'
-    link = "https://rry1ceebgg.execute-api.ap-south-1.amazonaws.com/prod/user/updatePassword/" + token + "/" + project_code
+    link = f"{base_urls['prod']}/user/updatePassword/" + token + "/" + project_code
     html_content = '''
         <html>
     <head>
@@ -87,7 +90,7 @@ def send_forgetPW_mail_prod(receiver_email, token, image_url, name , project_cod
 
 def send_forgetPW_mail_sandBox(receiver_email, token, image_url, name , project_code):
     subject = 'Account Verification'
-    link = "https://8348f33z41.execute-api.ap-south-1.amazonaws.com/beta/user/updatePassword/" + token + "/" + project_code
+    link = f"{base_urls['beta']}/user/updatePassword/" + token + "/" + project_code
     html_content = '''
         <html>
     <head>
