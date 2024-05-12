@@ -34,7 +34,7 @@ def send_forgetPW_mail(receiver_email, token, image_url, name , project_code):
                         margin-top: 15px; 
                         font-size: 18px; 
                         cursor: pointer;">Verify My Email</button></a>
-                <a href="http://43.205.96.222:5000"><p 
+                <a href="'''+f'{base_urls["base_url"]}''''"><p 
                                 style="margin-top:12%; 
                                 text-align: center;
                                 font-size: 12px; 
@@ -77,7 +77,7 @@ def send_forgetPW_mail_prod(receiver_email, token, image_url, name , project_cod
                         margin-top: 15px; 
                         font-size: 18px; 
                         cursor: pointer;">Verify My Email</button></a>
-                <a href="http://43.205.96.222:5000"><p 
+                <a href="'''+f'{base_urls["base_url"]}''''"><p 
                                 style="margin-top:12%; 
                                 text-align: center;
                                 font-size: 12px; 
@@ -120,7 +120,7 @@ def send_forgetPW_mail_sandBox(receiver_email, token, image_url, name , project_
                         margin-top: 15px; 
                         font-size: 18px; 
                         cursor: pointer;">Verify My Email</button></a>
-                <a href="http://43.205.96.222:5000"><p 
+                <a href="'''+f'{base_urls["base_url"]}''''"><p 
                                 style="margin-top:12%; 
                                 text-align: center;
                                 font-size: 12px; 

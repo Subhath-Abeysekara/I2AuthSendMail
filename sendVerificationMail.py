@@ -34,7 +34,7 @@ def send_verification_email(receiver_email, verification_code , userCode , type 
                         margin-top: 15px; 
                         font-size: 18px; 
                         cursor: pointer;">Verify My Email</button></a>
-                <a href="http://43.205.96.222:5000"><p 
+                <a href="'''+f'{base_urls["base_url"]}''''"><p 
                                 style="margin-top:12%; 
                                 text-align: center;
                                 font-size: 12px; 
@@ -78,7 +78,7 @@ def send_verification_email_prod(receiver_email, verification_code, userCode, ty
                         margin-top: 15px; 
                         font-size: 18px; 
                         cursor: pointer;">Verify My Email</button></a>
-                <a href="http://43.205.96.222:5000"><p 
+                <a href="'''+f'{base_urls["base_url"]}''''"><p 
                                 style="margin-top:12%; 
                                 text-align: center;
                                 font-size: 12px; 
@@ -121,7 +121,7 @@ def send_verification_email_sandBox(receiver_email, verification_code, userCode,
                         margin-top: 15px; 
                         font-size: 18px; 
                         cursor: pointer;">Verify My Email</button></a>
-                <a href="http://43.205.96.222:5000"><p 
+                <a href="'''+f'{base_urls["base_url"]}''''"><p 
                                 style="margin-top:12%; 
                                 text-align: center;
                                 font-size: 12px; 
